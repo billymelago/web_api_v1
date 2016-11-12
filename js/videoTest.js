@@ -52,6 +52,16 @@ function charInfo(people) {
         return home[0].name;        
     });
     console.log(people);
+    displayHomeworld(people);
+}
+function displayHomeworld(homeWorld) {
+        homeWorld.forEach(function(planet) {
+            var $container = $('<div>').addClass('homeworld');
+            var $title = $('<h5>').text('Planet name: ' + planet);
+            $container.append($title);
+            $('.homeworld_cont').append($container); 
+        });
+        
 }
 
 function getRandomCharacter(charaterArray) {

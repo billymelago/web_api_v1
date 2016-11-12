@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+div, main, footer {
+    padding: 12px;
+}
+
 #overlay {
     display: none;
     width: 100%;
@@ -18,9 +22,9 @@ body {
     width: 100%;
     color: #aaa;
 }
-.filmPoster_cont {
-    display: block;
-    width: 480px;
-    height: 710;
-    border: solid 2px yellow;
+
+.filmCrawl_cont {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-bottom: solid 2px;
 }

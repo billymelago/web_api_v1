@@ -12,8 +12,6 @@ $(document).ready(function() {
         
         //Loop thru film data
         $.each(films, function(i, filmData) {
-            //need to go into ../assets/posters/....jpg that matches the film title
-            
             filmsHTML += '<li class="filmTitle">';
             filmsHTML += filmData.title;
             filmsHTML += '</li>';
@@ -36,7 +34,7 @@ $(document).ready(function() {
                     peopleHTML += '<li class="name">';
                     peopleHTML += '<h2>' + peopleData.name + '</h2>';
                     if(peopleData.films.length){
-                        peopleHTML += '<h3>Films</h3>';
+                        peopleHTML += '<h3>Appeared in the following film(s):</h3>';
                         peopleHTML += '<ul class="film_name">';
                         
                         //Loop thru films data
@@ -131,7 +129,7 @@ $(document).ready(function() {
                     //Loop thru planet data
                     $.each(planets.results, function(i, planetsData) { 
                         planetsHTML += '<li class="planet_name">';
-                        planetsHTML += planetsData.name + ', ' + planetsData.population;
+                        planetsHTML += planetsData.name + ', ' + 'Population: ' + planetsData.population;
                         planetsHTML += '</li>';
                         residentURLS.push(planetsData.residents);
                     }); //end $each(planetData)
