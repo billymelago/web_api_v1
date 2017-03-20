@@ -61,7 +61,7 @@ $(document).ready(function() {
                 
             }); // end JSON(speciesResponses)
             $('.filmTitle').click(function(){
-                //$overlay.show();
+                $overlay.show();
                 var newSearch = $(this).text();
                 $.getJSON('http://swapi.co/api/films/?search=' + newSearch,
                 function displayOverlayInfo(info) {
@@ -77,21 +77,21 @@ $(document).ready(function() {
                     overlayHTML += '<button id="next" class="btn">Next</button>';
                     overlayHTML += '</div>';
                     
-                    $('.filmCrawl_cont').html(overlayHTML);
+                    $('#overlay').html(overlayHTML);
                     
                     $('#next').click(function(){
+                        $('#overlay').html();
                         var id = info.results[0].episode_id;
                         console.log(id);
-                        $('#overlay').html();
+                        
                         if(id < 7) {
-                            
                             id++;
                             var nextFilm = 'http://swapi.co/api/films/' + id + '/';
                             console.log(nextFilm);
-                            function displayNextFilm(response){
+                            function displayNextFilm(info) {
                                 var overlayHTML = '<div>';
-                                $.each(response.results, function(i, data){
-                                    console.log(data);
+                                $.each(info.results, function(i, data){
+                                    overlayHTML += '<p>The films poster will be displayed here</p>';
                                     overlayHTML += '<h3>' + data.title + '</h3>';
                                     overlayHTML += '<p>' + data.opening_crawl + '</p>';
                                     overlayHTML += '<p>Director: ' + data.director + ', Release Date: ' + data.release_date + '</p>';
@@ -100,7 +100,10 @@ $(document).ready(function() {
                                 overlayHTML += '<button id="next" class="btn">Next</button>';
                                 overlayHTML += '</div>';
 
-                                $('#overlay').html(overlayHTML);    
+                                $('#overlay').html(overlayHTML); 
+                                $overlay.click(function(){
+                                    $overlay.hide();
+                                });
                             } //end displayNextFilm()
                             $.getJSON(nextFilm, displayNextFilm);
                         } //end if id < 7
@@ -109,9 +112,7 @@ $(document).ready(function() {
             });
         }); // end JSON(peopleResponse)
         
-        //$overlay.click(function(){
-            //$overlay.hide();
-        //});
+      
         var residentURLS = [];
         //Loop over all planet pages
         for (var j = 1; j < 8; j++){
